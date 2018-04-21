@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/celianna_TileA2.png-2029a1451b5706aa3a2df4d4518d5c9e.stex"
+path="res://.import/celianna_TileB1.png-6ce50d07c04b02d15a5fcbb10c5adccc.stex"
 
 [deps]
 
-source_file="res://assets/tilemaps/celianna_TileA2.png"
-source_md5="fb33d2813f08b30239e33f5b4cf380d0"
+source_file="res://assets/tilesets/celianna_TileB1.png"
+source_md5="4694c01608d227c560304858e5bedfa2"
 
-dest_files=[ "res://.import/celianna_TileA2.png-2029a1451b5706aa3a2df4d4518d5c9e.stex" ]
-dest_md5="7c12d787c3b2d687987434e24bc5fd6b"
+dest_files=[ "res://.import/celianna_TileB1.png-6ce50d07c04b02d15a5fcbb10c5adccc.stex" ]
+dest_md5="af440a35e5be0842a126d274856f4a97"
 
 [params]
 

@@ -1,0 +1,23 @@
+[remap]
+
+importer="vnen.tiled_importer"
+type="PackedScene"
+path="res://.import/amazeproject.tmx-327b3a947cf7b877d7df636ba7e32af5.scn"
+
+[deps]
+
+source_file="res://assets/tilesets/amazeproject.tmx"
+source_md5="4c16b5801718db679ce36c61e3ab7aa3"
+
+dest_files=[ "res://.import/amazeproject.tmx-327b3a947cf7b877d7df636ba7e32af5.scn" ]
+dest_md5="ea5aed25ee144add64c3227ed1bbe58d"
+
+[params]
+
+custom_properties=true
+tile_metadata=false
+uv_clip=true
+image_flags=7
+embed_internal_images=false
+save_tiled_properties=false
+post_import_script=""
