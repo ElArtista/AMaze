@@ -15,13 +15,14 @@ func _input(event):
 			player.add_checkpoint(event.position)
 
 func _ready():
+	# Seed the random generator
+	randomize()
 	# Create player
 	player = Player.instance()
 	add_child(player)
-	# Gather path nodes and try to put them in order
-	var path_nodes = $Background/PATH.get_children()
-	path_nodes.sort_custom(NameSorter, "sort")
-	path_nodes.invert()
-	# Make player traverse the nodes
-	for pn in path_nodes:
-		player.add_checkpoint(pn.position)
+	# Choose a path randomly
+	var paths = $Paths.get_children()
+	var sample_path = paths[randi() % paths.size()].curve
+	# Make player traverse the path
+	for i in range(sample_path.get_point_count()):
+		player.add_checkpoint(sample_path.get_point_position(i))

@@ -2,14 +2,17 @@ extends Area2D
 
 export (int) var SPEED
 var checkpoints = []
+var placed
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
-	pass
+	placed = false
 
 func add_checkpoint(cp):
-	checkpoints.push_back(cp)
+	if not placed:
+		position = cp
+		placed = true
+	else:
+		checkpoints.push_back(cp)
 
 func _process(delta):
 	# Called every frame. Delta is time since last frame.
