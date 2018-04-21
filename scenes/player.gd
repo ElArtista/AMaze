@@ -8,10 +8,8 @@ func _ready():
 	# Initialization here
 	pass
 
-func _input(event):
-	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_LEFT:
-			checkpoints.push_back(event.position)
+func add_checkpoint(cp):
+	checkpoints.push_back(cp)
 
 func _process(delta):
 	# Called every frame. Delta is time since last frame.
