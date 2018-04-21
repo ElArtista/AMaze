@@ -1,0 +1,23 @@
+[remap]
+
+importer="vnen.tiled_importer"
+type="PackedScene"
+path="res://.import/Background.tmx-8d29430feb171ba4ec55f86ca1d7dfae.scn"
+
+[deps]
+
+source_file="res://assets/tilemaps/Background.tmx"
+source_md5="3098605ab362685d61fddd15b5ee67e6"
+
+dest_files=[ "res://.import/Background.tmx-8d29430feb171ba4ec55f86ca1d7dfae.scn" ]
+dest_md5="b59b0caef698166a13e973d97895e163"
+
+[params]
+
+custom_properties=true
+tile_metadata=false
+uv_clip=true
+image_flags=7
+embed_internal_images=false
+save_tiled_properties=false
+post_import_script=""
