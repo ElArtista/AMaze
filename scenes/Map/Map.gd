@@ -23,7 +23,7 @@ func remove_item(item):
 func _ready():
     for i in $PATH.get_children():
         path_points.append(i.position)
-        add_child(new_sprite(load("res://assets/icon.png"), i.position))
+        add_child(new_sprite(load("res://assets/icons/misc/step_tile.png"), i.position))
         
     var types = item_scene.instance().TYPES
     for i in $DIAMONDS.get_children():
