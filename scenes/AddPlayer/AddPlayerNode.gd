@@ -5,6 +5,7 @@ var player_name
 
 func _ready():
     add_constant_override("separation", 40)
+    player_name = ""
     pass
 
 

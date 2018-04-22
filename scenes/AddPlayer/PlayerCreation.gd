@@ -23,7 +23,9 @@ func _handle_add_player_pressed(name):
 func _on_TextureButton_pressed():
     var names = Array()
     for i in $ScrollContainer/VBoxContainer.get_children():
-        names.append(i.player_name)
+        if !i.player_name.empty():
+            names.append(i.player_name)
 
-    emit_signal("done_pressed", names)
-    print(names)
+    if !names.empty():
+        emit_signal("done_pressed", names)
+        print(names)
