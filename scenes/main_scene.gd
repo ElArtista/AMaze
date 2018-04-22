@@ -55,11 +55,20 @@ func lines_intersect(p0_x, p0_y, p1_x, p1_y, p2_x, p2_y, p3_x, p3_y):
         return true
     return false
 
+func static_body2d_to_path(o):
+    var poly = o.get_children()[0].polygon
+    var origin = o.position
+    var path = []
+    path.append(origin)
+    for i in range(poly.size()):
+        path.append(origin + poly[i])
+    return path
+
 func line_intersects_path(v1, v2, path):
-    var curve = path.curve
-    for i in range(curve.get_point_count() - 1):
-        var p1 = curve.get_point_position(i)
-        var p2 = curve.get_point_position(i + 1)
+    for i in range(path.size() - 1):
+        var p1 = path[i]
+        var p2 = path[i + 1]
+        print("p1: ", p1, " p2: ", p2)
         if lines_intersect(v1.x, v1.y, v2.x, v2.y, p1.x, p1.y, p2.x, p2.y):
             return true
     return false
@@ -67,7 +76,8 @@ func line_intersects_path(v1, v2, path):
 func path_points_adjacent(v1, v2, walls):
     # Check for any wall between
     for w in walls:
-        if line_intersects_path(v1, v2, w):
+        var p = static_body2d_to_path(w)
+        if line_intersects_path(v1, v2, p):
             return false
     var e = 10 # epsilon = 10 pixels
     # WARNIN: HAckalicius code bellow
@@ -118,7 +128,7 @@ func _ready():
     for pn in path_nodes:
         path_points.push_back(pn.position)
     # Gather wall Path2D's
-    var walls = Array()
+    var walls = $Map/walls.get_children()
     # Generate adjustency graph
     graph = create_graph(path_points, walls)
     graph.print()
