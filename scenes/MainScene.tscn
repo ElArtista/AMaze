@@ -1,49 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://scenes/main_scene.gd" type="Script" id=1]
-[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/Background.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Background.tscn" type="PackedScene" id=1]
 
-[sub_resource type="Curve2D" id=1]
+[node name="MainScene" type="Node"]
 
-bake_interval = 5.0
-_data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 466.334, 783.303, 0, 0, 0, 0, 466.334, 623.525, 0, 0, 0, 0, 237.218, 623.525 )
-}
-
-[sub_resource type="Curve2D" id=2]
-
-bake_interval = 5.0
-_data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 629.127, 783.303, 0, 0, 0, 0, 621.59, 471.284, 0, 0, 0, 0, 369.864, 466.762, 0, 0, 0, 0, 371.372, 145.698 )
-}
-
-[sub_resource type="Curve2D" id=3]
-
-bake_interval = 5.0
-_data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 787.172, 785.729, 0, 0, 0, 0, 785.495, 568.844, 0, 0, 0, 0, 778.814, 313.306, 0, 0, 0, 0, 1007.63, 309.966, 0, 0, 0, 0, 1005.96, 461.952, 0, 0, 0, 0, 944.162, 461.952, 0, 0, 0, 0, 945.832, 623.96, 0, 0, 0, 0, 1174.65, 628.97 )
-}
-
-[node name="MainScene" type="Node" index="0"]
-
-script = ExtResource( 1 )
-Player = ExtResource( 2 )
-
-[node name="Background" parent="." index="0" instance=ExtResource( 3 )]
-
-[node name="Paths" type="Node2D" parent="." index="1"]
-
-[node name="Path1" type="Path2D" parent="Paths" index="0"]
-
-curve = SubResource( 1 )
-
-[node name="Path2" type="Path2D" parent="Paths" index="1"]
-
-curve = SubResource( 2 )
-
-[node name="Path3" type="Path2D" parent="Paths" index="2"]
-
-curve = SubResource( 3 )
+[node name="Background" parent="." index="0" instance=ExtResource( 1 )]
 
 
