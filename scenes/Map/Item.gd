@@ -34,8 +34,6 @@ func init(t):
     elif type == "Eggplant":
         texture = eggplant
 
-    #set_texture(texture)
-
 func _ready():
     set_texture(texture)
 

@@ -101,9 +101,12 @@ func _input(event):
 func _ready():
     # Seed the random generator
     randomize()
+
     # Create player
     player = Player.instance()
+    player.connect("on_collide_with_item", self, "_handle_player_hit_item")
     add_child(player)
+
     # Gather path nodes and try to put them in order
     var path_nodes = $Map/PATH.get_children()
     path_nodes.sort_custom(NameSorter, "sort")
@@ -124,3 +127,6 @@ func _ready():
         var adjustent_points = graph.get_adjacent_verts(p)
         p = adjustent_points[randi() % adjustent_points.size()]
         player.add_checkpoint(p)
+
+func _handle_player_hit_item(item):
+    print(item.type)
