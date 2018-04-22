@@ -102,6 +102,9 @@ func _ready():
     # Seed the random generator
     randomize()
 
+    # Start BGM
+    $BGM.playing = true
+
     # Create player
     player = Player.instance()
     player.connect("on_collide_with_item", self, "_handle_player_hit_item")
