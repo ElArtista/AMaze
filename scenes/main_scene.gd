@@ -196,7 +196,7 @@ func _ready():
             var idx = winning_gems.find(i.position)
             r = winning_item_types[idx]
         var s = $Map.new_item(types[r], i.position)
-        s.scale = Vector2(0.13, 0.13)
+        s.scale = Vector2(0.25, 0.25)
         $Map.add_child(s)
 
 func _handle_player_hit_item(item):
