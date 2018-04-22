@@ -183,10 +183,12 @@ func _ready():
         p = rp
 
     # Generate items
-    var winning_item_types = [0, 1, 2]
     var item_scene = $Map.item_scene
-    var item_points = $Map.item_points
     var types = item_scene.instance().TYPES
+    var winning_item_types = Array()
+    for i in player_state.prev_items:
+        winning_item_types.append(types.find(i))
+    var item_points = $Map.item_points
     for i in $Map/diamonds.get_children():
         item_points.append(i.position)
         var r = randi() % types.size()
