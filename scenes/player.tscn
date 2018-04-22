@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/player.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/character/right2.png" type="Texture" id=2]
@@ -19,7 +19,13 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Player" type="Area2D"]
+[sub_resource type="CapsuleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 20.8529
+height = 9.11079
+
+[node name="Player" type="Area2D" index="0"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -40,5 +46,9 @@ scale = Vector2( 0.25, 0.25 )
 frames = SubResource( 1 )
 animation = "right"
 _sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+
+shape = SubResource( 2 )
 
 
