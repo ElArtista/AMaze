@@ -28,6 +28,7 @@ func _process(delta):
 			$AnimatedSprite.flip_h = velocity.x < 0
 			$AnimatedSprite.play()
 		else:
+			position = target_pt
 			checkpoints.pop_front()
 			$AnimatedSprite.animation = "idle"
 			$AnimatedSprite.stop()

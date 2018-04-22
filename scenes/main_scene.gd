@@ -80,8 +80,8 @@ func create_graph(verts, walls):
 	for i in range(verts.size()):
 		for j in range(verts.size()):
 			if i != j:
-				var v1 = verts[i].position
-				var v2 = verts[j].position
+				var v1 = verts[i]
+				var v2 = verts[j]
 				if path_points_adjacent(v1, v2, walls):
 					G.E.push_back(Pair.new(i, j))
 	return G
@@ -89,7 +89,14 @@ func create_graph(verts, walls):
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT:
-			player.add_checkpoint(event.position)
+			# Try to move player if on a graph vertex
+			if player.position in graph.V:
+				var adjustent_points = graph.get_adjacent_verts(player.position)
+				for ap in adjustent_points:
+					var hit_radius = 30
+					if (ap - event.position).length() < hit_radius:
+						player.add_checkpoint(ap)
+						return
 
 func _ready():
 	# Seed the random generator
@@ -101,15 +108,19 @@ func _ready():
 	var path_nodes = $Background/PATH.get_children()
 	path_nodes.sort_custom(NameSorter, "sort")
 	path_nodes.invert()
+	var path_points = []
+	for pn in path_nodes:
+		path_points.push_back(pn.position)
 	# Gather wall Path2D's
 	var walls = $Walls.get_children()
 	# Generate adjustency graph
-	graph = create_graph(path_nodes, walls)
+	graph = create_graph(path_points, walls)
 	graph.print()
 	# Random starting point
 	var p = graph.V[randi() % graph.V.size()]
-	# Make player traverse the path randomly for 500 steps
-	for i in range(500):
+	player.add_checkpoint(p)
+	# Make player traverse the path randomly for 5 steps
+	for i in range(5):
 		var adjustent_points = graph.get_adjacent_verts(p)
 		p = adjustent_points[randi() % adjustent_points.size()]
-		player.add_checkpoint(p.position)
+		player.add_checkpoint(p)
