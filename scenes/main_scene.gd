@@ -1,5 +1,8 @@
 extends Node
 
+const PlayerState = preload("PlayerState.gd")
+var player_state
+
 export (PackedScene) var Player
 var player
 var graph
@@ -79,7 +82,7 @@ func path_points_adjacent(v1, v2, walls):
         var p = static_body2d_to_path(w)
         if line_intersects_path(v1, v2, p):
             return false
-    var e = 10 # epsilon = 10 pixels
+    var e = 15 # epsilon = 10 pixels
     # WARNIN: HAckalicius code bellow
     # Check that horizontal or vertical offsets are small
     return (abs(v1.x - v2.x) < e or abs(v1.y - v2.y) < e)
@@ -108,7 +111,20 @@ func _input(event):
                         player.add_checkpoint(ap)
                         return
 
+func next_player(name, items):
+    player_state.player_name = name
+    player_state.prev_items = items
+    player_state.items = Array()
+    print("Next Player!")
+    print(items)
+
 func _ready():
+    # Setup player state
+    player_state = PlayerState.new()
+    player_state.prev_items = ["Egg", "Lemon", "Eggplant"]
+    player_state.connect("on_game_over", self, "_handle_on_game_over")
+    player_state.connect("on_win", self, "_handle_on_win")
+
     # Seed the random generator
     randomize()
 
@@ -139,4 +155,12 @@ func _ready():
 
 func _handle_player_hit_item(item):
     $Map.remove_item(item)
+    player_state.add_new_item(item.type)
     print(item.type)
+
+func _handle_on_game_over():
+    print("Game Over")
+
+func _handle_on_win(items):
+    items.pop_front()
+    next_player("mockup", items)
