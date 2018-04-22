@@ -7,10 +7,10 @@ path="res://.import/tileset_DC-01.tsx-b9c0746916c8d76d339a3b5e1ff79e3a.res"
 [deps]
 
 source_file="res://assets/tilesets/tileset_DC-01.tsx"
-source_md5="20fa97e6236117d88ea50112f5708513"
+source_md5="1222957ac28b2f0ae0a6a06c2f17c2fc"
 
 dest_files=[ "res://.import/tileset_DC-01.tsx-b9c0746916c8d76d339a3b5e1ff79e3a.res" ]
-dest_md5="ecbf2106c454ddbbda18e68a80cec74f"
+dest_md5="c037126cd0e54ef873659084cba08567"
 
 [params]
 
