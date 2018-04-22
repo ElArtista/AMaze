@@ -122,14 +122,10 @@ func _ready():
     # Generate adjustency graph
     graph = create_graph(path_points, walls)
     graph.print()
+
     # Random starting point
     var p = graph.V[randi() % graph.V.size()]
     player.add_checkpoint(p)
-    # Make player traverse the path randomly for 5 steps
-    for i in range(5):
-        var adjustent_points = graph.get_adjacent_verts(p)
-        p = adjustent_points[randi() % adjustent_points.size()]
-        player.add_checkpoint(p)
 
 func _handle_player_hit_item(item):
     $Map.remove_item(item)
