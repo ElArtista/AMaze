@@ -6,6 +6,7 @@ var player_state
 export (PackedScene) var Player
 var player
 var graph
+const NUM_WIN_ITEMS = 3
 
 class NameSorter:
     static func sort(a, b):
@@ -118,6 +119,21 @@ func next_player(name, items):
     print("Next Player!")
     print(items)
 
+func square_distance_pt_segment(a, b, p):
+    var n = b - a
+    var pa = a - p
+    var c = n.dot(pa)
+    # Closest point is a
+    if c > 0.0:
+        return pa.dot(pa)
+    var bp = p - b
+    # Closest point is b
+    if n.dot(bp) > 0.0:
+        return bp.dot(bp)
+    # Closest point is between a and b
+    var e = pa - n * (c / n.dot(n))
+    return e.dot(e)
+
 func _ready():
     # Setup player state
     player_state = PlayerState.new()
@@ -152,6 +168,34 @@ func _ready():
     # Random starting point
     var p = graph.V[randi() % graph.V.size()]
     player.add_checkpoint(p)
+
+    # Random path from starting point
+    var winning_gems = []
+    var winnning_path = [].append(p)
+    while winning_gems.size() < NUM_WIN_ITEMS:
+        var adjustent_points = graph.get_adjacent_verts(p)
+        var rp = adjustent_points[randi() % adjustent_points.size()]
+        for d in $Map/diamonds.get_children():
+            if sqrt(square_distance_pt_segment(p, rp, d.position)) < 20:
+                if not (d.position in winning_gems):
+                    winning_gems.append(d.position)
+                    break
+        p = rp
+
+    # Generate items
+    var winning_item_types = [0, 1, 2]
+    var item_scene = $Map.item_scene
+    var item_points = $Map.item_points
+    var types = item_scene.instance().TYPES
+    for i in $Map/diamonds.get_children():
+        item_points.append(i.position)
+        var r = randi() % types.size()
+        if i.position in winning_gems:
+            var idx = winning_gems.find(i.position)
+            r = winning_item_types[idx]
+        var s = $Map.new_item(types[r], i.position)
+        s.scale = Vector2(0.13, 0.13)
+        $Map.add_child(s)
 
 func _handle_player_hit_item(item):
     $Map.remove_item(item)
