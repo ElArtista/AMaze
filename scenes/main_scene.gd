@@ -44,7 +44,37 @@ class StepGraph:
 		for e in E:
 			print("Adj: ", e.to_string())
 
-func hack_graph(verts):
+func lines_intersect(p0_x, p0_y, p1_x, p1_y, p2_x, p2_y, p3_x, p3_y):
+	var s1_x = p1_x - p0_x
+	var s1_y = p1_y - p0_y
+	var s2_x = p3_x - p2_x
+	var s2_y = p3_y - p2_y
+	var s = (-s1_y * (p0_x - p2_x) + s1_x * (p0_y - p2_y)) / (-s2_x * s1_y + s1_x * s2_y + 0.000001);
+	var t = ( s2_x * (p0_y - p2_y) - s2_y * (p0_x - p2_x)) / (-s2_x * s1_y + s1_x * s2_y + 0.000001);
+	if s >= 0 && s <= 1 && t >= 0 && t <= 1:
+		return true
+	return false
+
+func line_intersects_path(v1, v2, path):
+	var curve = path.curve
+	for i in range(curve.get_point_count() - 1):
+		var p1 = curve.get_point_position(i)
+		var p2 = curve.get_point_position(i + 1)
+		if lines_intersect(v1.x, v1.y, v2.x, v2.y, p1.x, p1.y, p2.x, p2.y):
+			return true
+	return false
+
+func path_points_adjacent(v1, v2, walls):
+	# Check for any wall between
+	for w in walls:
+		if line_intersects_path(v1, v2, w):
+			return false
+	var e = 10 # epsilon = 10 pixels
+	# WARNIN: HAckalicius code bellow
+	# Check that horizontal or vertical offsets are small
+	return (abs(v1.x - v2.x) < e or abs(v1.y - v2.y) < e)
+
+func create_graph(verts, walls):
 	var G = StepGraph.new()
 	G.V = verts
 	for i in range(verts.size()):
@@ -52,10 +82,7 @@ func hack_graph(verts):
 			if i != j:
 				var v1 = verts[i].position
 				var v2 = verts[j].position
-				var e = 10 # epsilon = 10 pixels
-				# WARNIN: HAckalicius code bellow
-				# Check that horizontal or vertical offsets are small
-				if abs(v1.x - v2.x) < e or abs(v1.y - v2.y) < e:
+				if path_points_adjacent(v1, v2, walls):
 					G.E.push_back(Pair.new(i, j))
 	return G
 
@@ -74,12 +101,11 @@ func _ready():
 	var path_nodes = $Background/PATH.get_children()
 	path_nodes.sort_custom(NameSorter, "sort")
 	path_nodes.invert()
+	# Gather wall Path2D's
+	var walls = $Walls.get_children()
 	# Generate adjustency graph
-	graph = hack_graph(path_nodes)
+	graph = create_graph(path_nodes, walls)
 	graph.print()
-	# Choose a path randomly
-	#var paths = $Paths.get_children()
-	#var sample_path = paths[randi() % paths.size()].curve
 	# Random starting point
 	var p = graph.V[randi() % graph.V.size()]
 	# Make player traverse the path randomly for 500 steps

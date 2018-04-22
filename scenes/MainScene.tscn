@@ -1,9 +1,71 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://scenes/Background.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/main_scene.gd" type="Script" id=1]
+[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Background.tscn" type="PackedScene" id=3]
 
-[node name="MainScene" type="Node"]
+[sub_resource type="Curve2D" id=1]
 
-[node name="Background" parent="." index="0" instance=ExtResource( 1 )]
+bake_interval = 5.0
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 700, 790, 0, 0, 0, 0, 700, 380, 0, 0, 0, 0, 450, 380, 0, 0, 0, 0, 450, 220, 0, 0, 0, 0, 1090, 220, 0, 0, 0, 0, 1090, 540, 0, 0, 0, 0, 1000, 540 )
+}
+
+[sub_resource type="Curve2D" id=2]
+
+bake_interval = 5.0
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 550, 800, 0, 0, 0, 0, 540, 540, 0, 0, 0, 0, 160, 540, 0, 0, 0, 0, 160, 700, 0, 0, 0, 0, 380, 700, 0, 0, 0, 0, 380, 800 )
+}
+
+[sub_resource type="Curve2D" id=3]
+
+bake_interval = 5.0
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 160, 160, 0, 0, 0, 0, 160, 380, 0, 0, 0, 0, 320, 380 )
+}
+
+[sub_resource type="Curve2D" id=4]
+
+bake_interval = 5.0
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 960, 380, 0, 0, 0, 0, 870, 380, 0, 0, 0, 0, 860, 800 )
+}
+
+[sub_resource type="Curve2D" id=5]
+
+bake_interval = 5.0
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 1150, 700, 0, 0, 0, 0, 1020, 700, 0, 0, 0, 0, 1020, 790 )
+}
+
+[node name="MainScene" type="Node" index="0"]
+
+script = ExtResource( 1 )
+Player = ExtResource( 2 )
+
+[node name="Background" parent="." index="0" instance=ExtResource( 3 )]
+
+[node name="Walls" type="Node2D" parent="." index="1"]
+
+[node name="Wall1" type="Path2D" parent="Walls" index="0"]
+
+curve = SubResource( 1 )
+
+[node name="Wall2" type="Path2D" parent="Walls" index="1"]
+
+curve = SubResource( 2 )
+
+[node name="Wall3" type="Path2D" parent="Walls" index="2"]
+
+curve = SubResource( 3 )
+
+[node name="Wall4" type="Path2D" parent="Walls" index="3"]
+
+curve = SubResource( 4 )
+
+[node name="Wall5" type="Path2D" parent="Walls" index="4"]
+
+curve = SubResource( 5 )
 
 
