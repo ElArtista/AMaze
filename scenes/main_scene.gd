@@ -159,6 +159,7 @@ func _handle_player_hit_item(item):
     print(item.type)
 
 func _handle_on_game_over():
+    get_tree().quit()
     print("Game Over")
 
 func _handle_on_win(items):
