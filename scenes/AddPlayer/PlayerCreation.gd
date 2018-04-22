@@ -25,7 +25,7 @@ func _on_TextureButton_pressed():
     for i in $ScrollContainer/VBoxContainer.get_children():
         if !i.player_name.empty():
             names.append(i.player_name)
-    get_tree().change_scene("res://scenes/MainScene.tscn")
+    get_tree().change_scene("res://scenes/PregameStart.tscn")
 
     if !names.empty():
         emit_signal("done_pressed", names)
