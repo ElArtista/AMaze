@@ -1,31 +1,21 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/AddPlayer/PlayerCreation.gd" type="Script" id=1]
-[ext_resource path="res://assets/icons/material/ic_done_white_64dp.png" type="Texture" id=2]
-[ext_resource path="res://assets/icons/material/ic_done_white_64dp_pressed.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/AMaze_Background-04.png" type="Texture" id=2]
+[ext_resource path="res://assets/icons/material/ic_done_white_64dp.png" type="Texture" id=3]
+[ext_resource path="res://assets/icons/material/ic_done_white_64dp_pressed.png" type="Texture" id=4]
 
-[sub_resource type="Gradient" id=1]
-
-offsets = PoolRealArray( 0 )
-colors = PoolColorArray( 0.353699, 0.361378, 0.476563, 1 )
-
-[sub_resource type="GradientTexture" id=2]
-
-flags = 4
-gradient = SubResource( 1 )
-width = 2048
-
-[sub_resource type="DynamicFontData" id=3]
+[sub_resource type="DynamicFontData" id=1]
 
 font_path = "res://assets/fonts/RobotoSlab-Bold.ttf"
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=2]
 
 size = 64
 use_mipmaps = false
 use_filter = false
-font_data = SubResource( 3 )
-_sections_unfolded = [ "Font", "Settings" ]
+font_data = SubResource( 1 )
+_sections_unfolded = [ "Font" ]
 
 [node name="PlayerCreation" type="Node"]
 
@@ -45,7 +35,8 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = SubResource( 2 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Visibility" ]
 
 [node name="HelpLabel" type="Label" parent="." index="1"]
 
@@ -63,7 +54,8 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.945098, 0.352941, 0.160784, 1 )
 text = "Πατήστε (+) για να προσθέσετε παίκτες"
 align = 1
 valign = 1
@@ -115,6 +107,7 @@ alignment = 0
 
 [node name="TextureButton" type="TextureButton" parent="." index="3"]
 
+modulate = Color( 0.945098, 0.352941, 0.160784, 1 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -134,9 +127,9 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 2 )
-texture_pressed = ExtResource( 3 )
-_sections_unfolded = [ "Textures" ]
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+_sections_unfolded = [ "Textures", "Visibility" ]
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
 

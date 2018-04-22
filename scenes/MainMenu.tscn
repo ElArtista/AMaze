@@ -1,0 +1,190 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scenes/MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/AMaze_Background-01.png" type="Texture" id=2]
+[ext_resource path="res://assets/fonts/RobotoSlab-Bold.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://RobotoSlab-Bold.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Lobster-Regular.ttf" type="DynamicFontData" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+
+size = 80
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 3 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=2]
+
+size = 80
+use_mipmaps = false
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
+
+size = 60
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
+
+size = 40
+use_mipmaps = false
+use_filter = true
+font_data = ExtResource( 5 )
+_sections_unfolded = [ "Font" ]
+
+[node name="MainMenu" type="Node" index="0"]
+
+script = ExtResource( 1 )
+
+[node name="BackgroundImage" type="TextureRect" parent="." index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1283.0
+margin_bottom = 797.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 0
+_sections_unfolded = [ "Visibility" ]
+
+[node name="NewGameTimer" type="Timer" parent="." index="1"]
+
+process_mode = 1
+wait_time = 0.1
+one_shot = true
+autostart = false
+
+[node name="CreditsTimer" type="Timer" parent="." index="2"]
+
+process_mode = 1
+wait_time = 0.1
+one_shot = true
+autostart = false
+
+[node name="NewGameLabel" type="Label" parent="." index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 407.0
+margin_top = 433.0
+margin_right = 927.0
+margin_bottom = 539.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.945098, 0.352941, 0.160784, 1 )
+text = "Νέο Παιχνίδι"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_colors", "custom_fonts" ]
+
+[node name="NewGame" type="Button" parent="NewGameLabel" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -4.0
+margin_top = 9.0
+margin_right = 522.0
+margin_bottom = 105.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.585938, 0.148773, 0.148773, 1 )
+toggle_mode = false
+enabled_focus_mode = 0
+shortcut = null
+group = null
+text = "Νέο Παιχνίδι"
+flat = true
+align = 1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="CreditsLabel" type="Label" parent="." index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 553.0
+margin_top = 559.0
+margin_right = 757.0
+margin_bottom = 639.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.945098, 0.352941, 0.160784, 1 )
+text = "Credits"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="Credits" type="Button" parent="CreditsLabel" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -6.0
+margin_top = 1.0
+margin_right = 209.0
+margin_bottom = 75.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color_disabled = Color( 0.582031, 0.136414, 0.136414, 1 )
+custom_colors/font_color = Color( 1, 0.359375, 0.359375, 1 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Credits"
+flat = true
+align = 1
+_sections_unfolded = [ "custom_colors" ]
+
+[connection signal="timeout" from="NewGameTimer" to="." method="_on_NewGameTimer_timeout"]
+
+[connection signal="timeout" from="CreditsTimer" to="." method="_on_CreditsTimer_timeout"]
+
+[connection signal="pressed" from="NewGameLabel/NewGame" to="." method="_on_NewGame_pressed"]
+
+[connection signal="pressed" from="CreditsLabel/Credits" to="." method="_on_Credits_pressed"]
+
+
