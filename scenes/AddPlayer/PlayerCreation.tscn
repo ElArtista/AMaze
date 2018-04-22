@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/AddPlayer/PlayerCreation.gd" type="Script" id=1]
-[ext_resource path="res://assets/icons/ic_done_white_64dp.png" type="Texture" id=2]
-[ext_resource path="res://assets/icons/ic_done_white_64dp_pressed.png" type="Texture" id=3]
+[ext_resource path="res://assets/icons/material/ic_done_white_64dp.png" type="Texture" id=2]
+[ext_resource path="res://assets/icons/material/ic_done_white_64dp_pressed.png" type="Texture" id=3]
 
 [sub_resource type="Gradient" id=1]
 

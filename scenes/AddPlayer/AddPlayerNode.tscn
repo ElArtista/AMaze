@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/AddPlayer/AddPlayerNode.gd" type="Script" id=1]
-[ext_resource path="res://assets/icon.png" type="Texture" id=2]
+[ext_resource path="res://assets/icons/material/ic_add_white_48dp.png" type="Texture" id=2]
+[ext_resource path="res://assets/icons/material/ic_add_white_48dp_pressed.png" type="Texture" id=3]
 
 [sub_resource type="DynamicFontData" id=1]
 
@@ -79,7 +80,9 @@ enabled_focus_mode = 2
 shortcut = null
 group = null
 texture_normal = ExtResource( 2 )
-_sections_unfolded = [ "Textures" ]
+texture_pressed = ExtResource( 3 )
+stretch_mode = 1
+_sections_unfolded = [ "Anchor", "Textures" ]
 
 [connection signal="text_changed" from="EditName" to="." method="_on_EditName_text_changed"]
 
