@@ -111,14 +111,14 @@ func _ready():
     add_child(player)
 
     # Gather path nodes and try to put them in order
-    var path_nodes = $Map/PATH.get_children()
+    var path_nodes = $Map/path.get_children()
     path_nodes.sort_custom(NameSorter, "sort")
     path_nodes.invert()
     var path_points = []
     for pn in path_nodes:
         path_points.push_back(pn.position)
     # Gather wall Path2D's
-    var walls = $Walls.get_children()
+    var walls = Array()
     # Generate adjustency graph
     graph = create_graph(path_points, walls)
     graph.print()
