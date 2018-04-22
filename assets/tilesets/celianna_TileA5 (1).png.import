@@ -1,0 +1,32 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/celianna_TileA5 (1).png-869ea164f79ae54f157bd14c1f543fec.stex"
+
+[deps]
+
+source_file="res://assets/tilesets/celianna_TileA5 (1).png"
+source_md5="0757a4b8148d04e825fb19a6724a18e7"
+
+dest_files=[ "res://.import/celianna_TileA5 (1).png-869ea164f79ae54f157bd14c1f543fec.stex" ]
+dest_md5="717443ec430e31668fabbf94a189c22c"
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0

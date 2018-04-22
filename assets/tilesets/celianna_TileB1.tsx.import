@@ -1,0 +1,23 @@
+[remap]
+
+importer="vnen.tiled_tileset_importer"
+type="TileSet"
+path="res://.import/celianna_TileB1.tsx-75c08f186a926f9eda377433ce2df10b.res"
+
+[deps]
+
+source_file="res://assets/tilesets/celianna_TileB1.tsx"
+source_md5="ebd444d5b53bca2e5bd30fdb22cc565d"
+
+dest_files=[ "res://.import/celianna_TileB1.tsx-75c08f186a926f9eda377433ce2df10b.res" ]
+dest_md5="ef6fbf426cfa2bb87c84634ab32c8906"
+
+[params]
+
+custom_properties=true
+tile_metadata=false
+image_flags=7
+embed_internal_images=false
+save_tiled_properties=false
+apply_offset=false
+post_import_script=""
