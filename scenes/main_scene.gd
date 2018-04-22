@@ -105,7 +105,7 @@ func _ready():
 	player = Player.instance()
 	add_child(player)
 	# Gather path nodes and try to put them in order
-	var path_nodes = $Background/PATH.get_children()
+	var path_nodes = $Map/PATH.get_children()
 	path_nodes.sort_custom(NameSorter, "sort")
 	path_nodes.invert()
 	var path_points = []
