@@ -129,4 +129,5 @@ func _ready():
         player.add_checkpoint(p)
 
 func _handle_player_hit_item(item):
+    $Map.remove_item(item)
     print(item.type)

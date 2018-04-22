@@ -17,6 +17,9 @@ func new_sprite(texture, pos):
     s.position = pos
     return s
 
+func remove_item(item):
+    remove_child(item)
+
 func _ready():
     for i in $PATH.get_children():
         path_points.append(i.position)
