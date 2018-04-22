@@ -1,20 +1,25 @@
 extends Node
 
+const PlayerState = preload("PlayerState.gd")
+const Item = preload("Map/Item.gd")
+
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
 var countdown = 5
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
-	pass
-
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
-
+    if !global.player_state:
+        global.player_state = PlayerState.new()
+        global.player_state.prev_items = ["Egg", "Lemon", "Eggplant"]
+    global.player_state.player_name = global.player_names[global.player_idx]
+    
+    var t1 = Item.type_to_texture(global.player_state.prev_items[0])
+    var t2 = Item.type_to_texture(global.player_state.prev_items[1])
+    var t3 = Item.type_to_texture(global.player_state.prev_items[2])
+    $ItemContainer/FirstItem.texture = t1
+    $ItemContainer/SecondItem.texture = t2
+    $ItemContainer/ThirdItem.texture = t3
 
 func _on_Timer_timeout():
 	if countdown >= 1:

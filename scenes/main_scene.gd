@@ -1,7 +1,6 @@
 extends Node
 
 const PlayerState = preload("PlayerState.gd")
-var player_state
 
 export (PackedScene) var Player
 var player
@@ -113,11 +112,12 @@ func _input(event):
                         return
 
 func next_player(name, items):
-    player_state.player_name = name
-    player_state.prev_items = items
-    player_state.items = Array()
+    global.player_state.player_name = name
+    global.player_state.prev_items = items
+    global.player_state.items = Array()
     print("Next Player!")
     print(items)
+    get_tree().change_scene("res://scenes/PregameStart.tscn")
 
 func square_distance_pt_segment(a, b, p):
     var n = b - a
@@ -136,10 +136,8 @@ func square_distance_pt_segment(a, b, p):
 
 func _ready():
     # Setup player state
-    player_state = PlayerState.new()
-    player_state.prev_items = ["Egg", "Lemon", "Eggplant"]
-    player_state.connect("on_game_over", self, "_handle_on_game_over")
-    player_state.connect("on_win", self, "_handle_on_win")
+    global.player_state.connect("on_game_over", self, "_handle_on_game_over")
+    global.player_state.connect("on_win", self, "_handle_on_win")
 
     # Seed the random generator
     randomize()
@@ -186,7 +184,7 @@ func _ready():
     var item_scene = $Map.item_scene
     var types = item_scene.instance().TYPES
     var winning_item_types = Array()
-    for i in player_state.prev_items:
+    for i in global.player_state.prev_items:
         winning_item_types.append(types.find(i))
     var item_points = $Map.item_points
     for i in $Map/diamonds.get_children():
@@ -201,7 +199,7 @@ func _ready():
 
 func _handle_player_hit_item(item):
     $Map.remove_item(item)
-    player_state.add_new_item(item.type)
+    global.player_state.add_new_item(item.type)
     print(item.type)
 
 func _handle_on_game_over():
@@ -210,4 +208,9 @@ func _handle_on_game_over():
 
 func _handle_on_win(items):
     items.pop_front()
-    next_player("mockup", items)
+    if global.player_idx < global.player_names.size() - 1:
+        global.player_idx += 1
+    else:
+        global.player_idx = 0
+
+    next_player(global.player_names[global.player_idx], items)
