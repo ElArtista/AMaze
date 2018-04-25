@@ -14,35 +14,35 @@ const carrot = preload("res://assets/icons/food/carrot.png")
 const eggplant = preload("res://assets/icons/food/eggplant.png")
 
 static func type_to_texture(t):
-    if t == "Egg":
-        return egg
-    elif t == "Apple":
-        return apple
-    elif t == "Candy":
-        return candy
-    elif t == "Grape":
-        return grape
-    elif t == "Lemon":
-        return lemon
-    elif t == "Carrot":
-        return carrot
-    elif t == "Eggplant":
-        return eggplant
-    else:
-        return null
+	if t == "Egg":
+		return egg
+	elif t == "Apple":
+		return apple
+	elif t == "Candy":
+		return candy
+	elif t == "Grape":
+		return grape
+	elif t == "Lemon":
+		return lemon
+	elif t == "Carrot":
+		return carrot
+	elif t == "Eggplant":
+		return eggplant
+	else:
+		return null
 
 #
 # Initialize Item
 # @t: String to represent this item's type. Choose from TYPES
 #
 func init(t):
-    type = t
-    texture = type_to_texture(type)
+	type = t
+	texture = type_to_texture(type)
 
 func _ready():
-    set_texture(texture)
+	set_texture(texture)
 
 func set_texture(t):
-    texture = t
-    if ($Sprite != null):
-        $Sprite.texture = texture
+	texture = t
+	if ($Sprite != null):
+		$Sprite.texture = texture
