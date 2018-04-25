@@ -7,7 +7,7 @@ path="res://.import/AMaze_Final.tmx-69556fc70ef7424a358277b8978e5593.scn"
 [deps]
 
 source_file="res://assets/tilesets/AMaze_Final.tmx"
-source_md5="314a26956b2fe6c1e2ee0bade18ac78c"
+source_md5="5a8181ebfb79747996cf3150b19285ef"
 
 dest_files=[ "res://.import/AMaze_Final.tmx-69556fc70ef7424a358277b8978e5593.scn" ]
 dest_md5="1079cc308ead9a4a961dd02f41275fcf"

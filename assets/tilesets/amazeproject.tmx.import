@@ -7,7 +7,7 @@ path="res://.import/amazeproject.tmx-327b3a947cf7b877d7df636ba7e32af5.scn"
 [deps]
 
 source_file="res://assets/tilesets/amazeproject.tmx"
-source_md5="0090c05677690c7dd24b19d4abb75992"
+source_md5="6ae432c235814a222b169e7cbb0e5635"
 
 dest_files=[ "res://.import/amazeproject.tmx-327b3a947cf7b877d7df636ba7e32af5.scn" ]
 dest_md5="3c43944e4b9d4d9b3d4dc7a19a3ac825"
