@@ -1,6 +1,6 @@
 extends Node2D
 
-var item_scene = preload("res://scenes/Map/Item.tscn")
+var item_scene = preload("res://objects/Item.tscn")
 
 var path_points = Array()
 var item_points = Array()

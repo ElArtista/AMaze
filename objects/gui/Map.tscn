@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://assets/tilesets/AMaze_Final.tmx" type="PackedScene" id=1]
-[ext_resource path="res://scenes/Map/Map.gd" type="Script" id=2]
+[ext_resource path="res://objects/gui/Map.gd" type="Script" id=2]
+
 
 [node name="AMaze_Final" instance=ExtResource( 1 )]
 

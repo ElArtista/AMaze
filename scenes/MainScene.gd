@@ -1,6 +1,6 @@
 extends Node
 
-const PlayerState = preload("PlayerState.gd")
+const PlayerState = preload("res://objects/player/PlayerState.gd")
 
 export (PackedScene) var Player
 var player
@@ -117,7 +117,7 @@ func next_player(name, items):
 	global.player_state.items = Array()
 	print("Next Player!")
 	print(items)
-	get_tree().change_scene("res://scenes/PregameStart.tscn")
+	get_tree().change_scene("res://scenes/menu/PregameStart.tscn")
 
 func square_distance_pt_segment(a, b, p):
 	var n = b - a

@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const Item = preload("Map/Item.gd")
+const Item = preload("res://objects/Item.gd")
 #onready var item = Item.new()
 
 signal on_collide_with_item(item)

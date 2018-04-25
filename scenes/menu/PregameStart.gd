@@ -1,7 +1,7 @@
 extends Node
 
-const PlayerState = preload("PlayerState.gd")
-const Item = preload("Map/Item.gd")
+const PlayerState = preload("res://objects/player/PlayerState.gd")
+const Item = preload("res://objects/Item.gd")
 
 # class member variables go here, for example:
 # var a = 2
