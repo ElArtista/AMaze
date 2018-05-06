@@ -1,12 +1,25 @@
+####################
+#   Line Endings   #
+####################
 # Set the default behavior, in case people don't have core.autocrlf set.
 * text=auto
 
 # Explicitly declare text files you want to always be normalized and converted
 # to native line endings on checkout.
-#*.gd text
-#*.scn text
+*.gd text
+*.scn text
 
 # Declare files that will always have CRLF line endings on checkout.
 *.import text eol=crlf
+*.scn text eol=crlf
+*.tres text eol=crlf
 
+# Declare truly binary files that should not be modified
+*.png binary
+*.ico binary
+*.jpg binary
+
+####################
+#       LFS        #
+####################
 *.png filter=lfs diff=lfs merge=lfs -text
